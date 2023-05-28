@@ -1,0 +1,24 @@
+<mat-toolbar class="d-flex justify-content-between">
+  <span>Development Nav</span>
+  <div class="d-md-flex gap-2 d-none">
+    <a
+      *ngFor="let route of routes"
+      mat-stroked-button
+      [routerLink]="route.path"
+      >{{ route.label }}</a
+    >
+  </div>
+  <div class="d-md-none d-flex">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a *ngFor="let route of routes" [routerLink]="route.path" mat-menu-item>
+        <span>{{ route.label }}</span>
+      </a>
+    </mat-menu>
+  </div>
+</mat-toolbar>
