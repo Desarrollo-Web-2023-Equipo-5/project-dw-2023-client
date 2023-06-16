@@ -9,6 +9,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { MainComponent } from './pages/main/main.component';
+import { TopNavComponent } from './components/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MainComponent } from './pages/main/main.component';
     PostListComponent,
     BottomNavComponent,
     MainComponent,
+    TopNavComponent,
   ],
   imports: [CommonModule, ProtectedRoutingModule, MaterialModule],
 })
