@@ -2,23 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FeedComponent } from './pages/feed/feed.component';
+import { MainComponent } from './pages/main/main.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: MainComponent,
     children: [
       {
         path: 'profile',
-        children: [
-          {
-            path: '',
-            component: ProfileComponent,
-          },
-          {
-            path: 'posts',
-            component: FeedComponent,
-          },
-        ],
+        component: ProfileComponent,
       },
       {
         path: 'feed',
@@ -26,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'profile',
+        redirectTo: 'feed',
       },
     ],
   },

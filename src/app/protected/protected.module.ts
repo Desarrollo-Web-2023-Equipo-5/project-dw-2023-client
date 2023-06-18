@@ -6,6 +6,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { PostComponent } from './components/post/post.component';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { MaterialModule } from '../shared/material/material.module';
+import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
+import { MainComponent } from './pages/main/main.component';
+import { TopNavComponent } from './components/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +17,10 @@ import { PostListComponent } from './components/post-list/post-list.component';
     FeedComponent,
     PostComponent,
     PostListComponent,
+    BottomNavComponent,
+    MainComponent,
+    TopNavComponent,
   ],
-  imports: [CommonModule, ProtectedRoutingModule],
+  imports: [CommonModule, ProtectedRoutingModule, MaterialModule],
 })
 export class ProtectedModule {}
