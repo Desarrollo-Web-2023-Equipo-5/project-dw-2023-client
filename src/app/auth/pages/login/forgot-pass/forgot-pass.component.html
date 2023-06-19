@@ -1,0 +1,24 @@
+<h2>Reset Password</h2>
+<div class="forgot-pass-menu">
+  <form action="forgot-pass.php" method="post">
+    <label for="password">Password: </label>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      placeholder="Enter your password"
+      required />
+
+    <label for="repeat-password">Repeat Password: </label>
+    <input
+      type="repeat-password"
+      id="repeat-password"
+      name="repeat-password"
+      placeholder="Repeat the password"
+      required />
+
+    <a id="back-to-login" href="./auth/login">Back to Login</a>
+
+    <input type="submit" value="Reset Password" />
+  </form>
+</div>
