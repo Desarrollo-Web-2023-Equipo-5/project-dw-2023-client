@@ -11,6 +11,7 @@ import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component
 import { MainComponent } from './pages/main/main.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
 
+
 @NgModule({
   declarations: [
     ProfileComponent,
