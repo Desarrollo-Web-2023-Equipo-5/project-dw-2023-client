@@ -1,0 +1,27 @@
+button {
+  width: 7em;
+}
+
+p {
+  width: 260px;
+
+  margin-top: -3em;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.background {
+  background: url('../../../../assets/embers.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #040404;
+  height: 100vh;
+}
+
+img {
+  margin-top: -3em;
+}
