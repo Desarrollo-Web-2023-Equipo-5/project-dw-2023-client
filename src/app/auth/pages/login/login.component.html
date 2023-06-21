@@ -1,24 +1,53 @@
-<h2>Login Page</h2>
-<div class="login-menu">
-  <form action="login.php" method="post">
-    <label for="Email">Email: </label>
-    <input
-      type="text"
-      id="email"
-      name="email"
-      placeholder="Enter your email"
-      required />
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <button
+    class="m-1 align-self-start"
+    mat-icon-button
+    aria-label="Example icon-button with a heart icon"
+    routerLink="/landing">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <img src="../../../../assets/logo.svg" alt="" />
+  <form
+    class="d-flex flex-column align-items-center justify-content-center"
+    [formGroup]="loginForm"
+    (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        formControlName="email"
+        matInput
+        placeholder="pat@example.com" />
+    </mat-form-field>
 
-    <label for="password">Password: </label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      placeholder="Enter your password"
-      required />
-
-    <a id="forgotPassword" href="./auth/login/forgot-pass">Forgot Password?</a>
-
-    <input type="submit" value="Login" />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hidePassword ? 'password' : 'text'" />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+      <mat-hint
+        ><a routerLink="/auth/forgot-pass">Forgot password?</a></mat-hint
+      >
+    </mat-form-field>
+    <button
+      class="mt-5"
+      type="submit"
+      color="warn"
+      mat-flat-button
+      [disabled]="loginForm.invalid">
+      Login
+    </button>
   </form>
 </div>
