@@ -1,30 +1,93 @@
-<h2>Register Page</h2>
-<div class="register-menu">
-  <form>
-    <label for="username">Username: </label>
-    <input
-      type="text"
-      id="username"
-      name="username"
-      placeholder="Enter your username"
-      required />
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <button
+    class="m-1 align-self-start"
+    mat-icon-button
+    aria-label="Example icon-button with a heart icon"
+    routerLink="/landing">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <img src="../../../../assets/logo.svg" alt="" />
+  <form
+    class="d-flex flex-column align-items-center justify-content-center gap-2"
+    [formGroup]="registerForm"
+    (ngSubmit)="register()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        formControlName="username"
+        matInput
+        placeholder="Enter your username" />
+      <mat-error *ngIf="registerForm.get('username')?.invalid">{{
+        getErrorMessage('username')
+      }}</mat-error>
+    </mat-form-field>
 
-    <label for="email">Email: </label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="Enter your email"
-      required />
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        formControlName="email"
+        matInput
+        placeholder="Enter your email" />
+      <mat-error *ngIf="registerForm.get('email')?.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
 
-    <label for="password">Password: </label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      placeholder="Enter your password"
-      required />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        placeholder="Enter your password" />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.get('password')?.invalid">{{
+        getErrorMessage('password')
+      }}</mat-error>
+    </mat-form-field>
 
-    <input type="submit" value="Register" />
+    <mat-form-field appearance="outline">
+      <mat-label>Repeat Password</mat-label>
+      <input
+        formControlName="repeatPassword"
+        matInput
+        [type]="hideRepeatPassword ? 'password' : 'text'"
+        placeholder="Repeat your password" />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hideRepeatPassword = !hideRepeatPassword"
+        [attr.aria-label]="'Hide repeat password'"
+        [attr.aria-pressed]="hideRepeatPassword">
+        <mat-icon>{{
+          hideRepeatPassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.get('repeatPassword')?.invalid">{{
+        getErrorMessage('repeatPassword')
+      }}</mat-error>
+    </mat-form-field>
+
+    <button
+      class="mt-3"
+      type="submit"
+      color="primary"
+      mat-flat-button
+      [disabled]="registerForm.invalid || isLoading">
+      {{ isLoading ? 'Loading...' : 'Register' }}
+    </button>
   </form>
 </div>
