@@ -28,7 +28,6 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/auth/login`, body).pipe(
       tap((resp: any) => {
         if (resp.token) {
-          this._activeUser = resp.user;
           localStorage.setItem('x-token', resp.token);
         }
       })

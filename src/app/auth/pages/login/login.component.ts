@@ -33,7 +33,6 @@ export class LoginComponent {
       next: resp => {
         if (resp.token) {
           this.router.navigateByUrl('/dashboard');
-          this.isLoading = false;
         }
       },
       error: err => {
@@ -41,7 +40,6 @@ export class LoginComponent {
         this.isLoading = false;
         this.toastr.error(err.error.errors[0].msg);
       },
-      complete: () => (this.isLoading = false),
     });
   }
 

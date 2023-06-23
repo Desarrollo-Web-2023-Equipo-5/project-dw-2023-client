@@ -36,10 +36,10 @@ export class RegisterComponent {
     }
     this.isLoading = true;
     this.authService.register(username, email, password).subscribe({
-      next: (resp: any) => {
-        if (resp && resp.token) {
-          this.router.navigateByUrl('/dashboard');
-          this.isLoading = false;
+      next: resp => {
+        if (resp.id) {
+          this.toastr.success("You've been registered successfully");
+          this.router.navigateByUrl('/auth/login');
         }
       },
       error: err => {
@@ -47,7 +47,6 @@ export class RegisterComponent {
         this.isLoading = false;
         this.toastr.error(err.error.errors[0].msg);
       },
-      complete: () => (this.isLoading = false),
     });
   }
 
