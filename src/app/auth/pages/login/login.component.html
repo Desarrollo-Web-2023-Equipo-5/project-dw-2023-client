@@ -1,1 +1,57 @@
-<p>login works!</p>
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <button
+    class="m-1 align-self-start"
+    mat-icon-button
+    aria-label="Example icon-button with a heart icon"
+    routerLink="/landing">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <img src="../../../../assets/logo.svg" alt="" />
+  <form
+    class="d-flex flex-column align-items-center justify-content-center gap-2"
+    [formGroup]="loginForm"
+    (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        formControlName="email"
+        matInput
+        placeholder="pat@example.com" />
+      <mat-error *ngIf="loginForm.get('email')?.invalid">{{
+        getErrorMessage('email')
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hidePassword ? 'password' : 'text'" />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{
+          hidePassword ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.get('password')?.invalid">{{
+        getErrorMessage('password')
+      }}</mat-error>
+    </mat-form-field>
+    <mat-hint><a routerLink="/auth/forgot-pass">Forgot password?</a></mat-hint>
+    <button
+      class="mt-3"
+      type="submit"
+      color="primary"
+      mat-flat-button
+      [disabled]="loginForm.invalid || isLoading">
+      {{ isLoading ? 'Loading...' : 'Login' }}
+    </button>
+  </form>
+</div>

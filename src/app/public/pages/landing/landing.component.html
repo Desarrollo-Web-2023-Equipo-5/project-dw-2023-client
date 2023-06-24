@@ -1,1 +1,25 @@
-<p>landing works!</p>
+<div
+  class="d-flex flex-column justify-content-around align-items-center background">
+  <img
+    src="../../../../assets/logo.svg"
+    alt="A logo that says Dungeons and Turtles" />
+  <p class="text-center landing-text pb-4">
+    Where you will find your next D&D group
+  </p>
+  <div class="d-flex flex-column gap-1">
+    <button
+      mat-raised-button
+      color="primary"
+      class="login"
+      routerLink="/auth/login">
+      Log in
+    </button>
+    <button
+      mat-button
+      color="primary"
+      class="register"
+      routerLink="/auth/register">
+      Register
+    </button>
+  </div>
+</div>
