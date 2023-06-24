@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Comment } from '../interfaces/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +13,17 @@ export class ApiService {
 
   getUserById(id: string) {
     return this.http.get<any>(`${this.baseUrl}/users/${id}`);
+  }
+
+  createComment(comment: Comment) {
+    return this.http.post<any>(`${this.baseUrl}/comments`, comment);
+  }
+
+  getComments(query: string) {
+    return this.http.get<any>(`${this.baseUrl}/comments${query}`);
+  }
+
+  deleteComment(id: string) {
+    return this.http.delete<any>(`${this.baseUrl}/comments/${id}`);
   }
 }
