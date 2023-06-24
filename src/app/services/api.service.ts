@@ -11,11 +11,6 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getUserById(id: string) {
-    const headers = new HttpHeaders().set(
-      'x-token',
-      localStorage.getItem('x-token') || ''
-    );
-    const options = { headers: headers };
-    return this.http.get<any>(`${this.baseUrl}/users/${id}`, options);
+    return this.http.get<any>(`${this.baseUrl}/users/${id}`);
   }
 }
