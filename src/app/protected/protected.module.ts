@@ -10,6 +10,9 @@ import { MaterialModule } from '../shared/material/material.module';
 import { BottomNavComponent } from './components/bottom-nav/bottom-nav.component';
 import { MainComponent } from './pages/main/main.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,14 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
     BottomNavComponent,
     MainComponent,
     TopNavComponent,
+    CommentComponent,
+    CommentsSectionComponent,
   ],
-  imports: [CommonModule, ProtectedRoutingModule, MaterialModule],
+  imports: [
+    CommonModule,
+    ProtectedRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ProtectedModule {}

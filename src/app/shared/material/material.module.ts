@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -26,6 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatSelectModule,
     MatChipsModule,
+    MatDialogModule,
   ],
 })
 export class MaterialModule {}
