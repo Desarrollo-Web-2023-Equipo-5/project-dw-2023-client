@@ -11,8 +11,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     canActivate: [validateTokenGuard],
-    canActivateChild: [validateTokenGuard],
-    canMatch: [validateTokenGuard],
     loadChildren: () =>
       import('./protected/protected.module').then(m => m.ProtectedModule),
   },

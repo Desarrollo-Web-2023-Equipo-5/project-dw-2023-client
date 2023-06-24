@@ -13,9 +13,14 @@ import { mergeMap } from 'rxjs';
 export class ProfileComponent {
   user!: User;
 
+  get activeUser(): User | null {
+    return this.authService.activeUser;
+  }
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
