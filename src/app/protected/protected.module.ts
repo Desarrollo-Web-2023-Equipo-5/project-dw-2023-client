@@ -13,6 +13,7 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CommentsSectionComponent } from './components/comments-section/comments
     TopNavComponent,
     CommentComponent,
     CommentsSectionComponent,
+    CreatePostComponent,
   ],
   imports: [
     CommonModule,
