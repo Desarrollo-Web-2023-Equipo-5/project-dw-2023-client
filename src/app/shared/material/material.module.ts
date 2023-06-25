@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatListModule } from "@angular/material/list";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatCardModule,
     MatBadgeModule,
+    MatListModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
