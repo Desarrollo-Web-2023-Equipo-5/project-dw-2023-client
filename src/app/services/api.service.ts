@@ -30,4 +30,8 @@ export class ApiService {
   createCampaign(campaign: any) {
     return this.http.post<any>(`${this.baseUrl}/campaigns`, campaign);
   }
+
+  getCampaigns() {
+    return this.http.get<any>(`${this.baseUrl}/campaigns`);
+  }
 }

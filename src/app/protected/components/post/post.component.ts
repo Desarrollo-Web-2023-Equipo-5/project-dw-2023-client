@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import { IPost } from "../../../interfaces/post.interface";
+import { Component, Input } from '@angular/core';
+import { Campaign } from '../../../interfaces/campaign.interface';
 
 @Component({
   selector: 'app-post',
@@ -7,6 +7,5 @@ import { IPost } from "../../../interfaces/post.interface";
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-
-  @Input() post?: IPost
+  @Input() post?: Campaign;
 }

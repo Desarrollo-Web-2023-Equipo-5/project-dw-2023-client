@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import { PostService } from "../../../services/post-service";
-import { IPost } from "../../../interfaces/post.interface";
-import { MatTabChangeEvent } from "@angular/material/tabs";
+import { Component, OnInit } from '@angular/core';
+import { Campaign } from '../../../interfaces/campaign.interface';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-feed',
@@ -9,28 +9,34 @@ import { MatTabChangeEvent } from "@angular/material/tabs";
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent {
+  constructor(private api: ApiService) {}
 
-  constructor(private postService: PostService) {}
+  campaignPosts: Campaign[] = [];
+  lfgPosts: Campaign[] = [];
 
-  campaignPosts: IPost[] = []
-  lfgPosts: IPost[] = []
-
-  getCampaignPosts(): void {
-    this.postService.getPostsByParameter("campaign").subscribe(posts => this.campaignPosts = posts);
+  ngOnInit(): void {
+    this.getCampaigns();
   }
 
-  getLfgPosts(): void {
-    this.postService.getPostsByParameter("lfg").subscribe(posts => this.lfgPosts = posts)
+  getCampaigns() {
+    this.api.getCampaigns().subscribe({
+      next: resp => {
+        this.campaignPosts = resp.campaigns;
+      },
+    });
+  }
+
+  getLfgPosts() {
+    console.log('getLfgPosts');
   }
 
   onTabClick(event: MatTabChangeEvent) {
-    console.log(event.tab.textLabel)
-    if (event.tab.textLabel === "Campaigns") {
-      this.getCampaignPosts()
-    } else if (event.tab.textLabel === "Looking for group") {
-      this.getLfgPosts()
+    console.log(event.tab.textLabel);
+    if (event.tab.textLabel === 'Campaigns') {
+      this.getCampaigns();
+    } else if (event.tab.textLabel === 'Looking for group') {
+      this.getLfgPosts();
     }
     console.log('Tab clicked', event);
   }
-
 }
