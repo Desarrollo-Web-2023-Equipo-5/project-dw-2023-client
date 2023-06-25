@@ -1,11 +1,17 @@
-<mat-card class="forum-entry-card" *ngIf="post">
-  <mat-card-header>
-    <mat-card-title>{{post.title}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="card-content">
-    <p class="message">{{post.message}}</p>
-  </mat-card-content>
-  <mat-card-actions class="creator-section">
-    <span class="creator-name">Created by: {{post.creator}}</span>
-  </mat-card-actions>
-</mat-card>
+<div
+  *ngIf="post"
+  class="d-flex align-items-center justify-content-between border post-container ps-2 mx-1"
+  style="background-color: rgb(235, 208, 173)">
+  <div>
+    <p>{{ post.title }}</p>
+  </div>
+  <div class="d-flex align-items-center">
+    <p>{{ post.currentPlayers.length }}/{{ post.playersNeeded }}</p>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>play_circle</mat-icon>
+    </button>
+  </div>
+</div>

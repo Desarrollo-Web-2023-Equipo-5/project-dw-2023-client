@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import { IPost } from "../../../interfaces/post.interface";
+import { Component, Input } from '@angular/core';
+import { Campaign } from '../../../interfaces/campaign.interface';
 
 @Component({
   selector: 'app-post-list',
@@ -7,7 +7,5 @@ import { IPost } from "../../../interfaces/post.interface";
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent {
-
-  @Input() filteredPosts: IPost[] = [];
-
+  @Input() filteredPosts: Campaign[] = [];
 }
