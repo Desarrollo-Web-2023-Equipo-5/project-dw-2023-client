@@ -1,19 +1,29 @@
 <div>
   <form
-    class="d-flex gap-3 flex-column justify-content-center align-items-center p-3">
+    class="d-flex gap-3 flex-column justify-content-center align-items-center p-3"
+    [formGroup]="campaignForm"
+    (ngSubmit)="createPost()">
     <mat-form-field class="example-full-width">
       <mat-label>Campaign Name</mat-label>
-      <input matInput placeholder="Ex. Curse of Strahd" />
+      <input
+        matInput
+        placeholder="Ex. Curse of Strahd"
+        formControlName="title" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Number of Players</mat-label>
-      <input matInput type="number" placeholder="Ex. 4" />
+      <input
+        matInput
+        type="number"
+        placeholder="Ex. 4"
+        formControlName="playersNeeded" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
       <textarea
         matInput
-        placeholder="Ex. You are trapped in the lands of Barovia..."></textarea>
+        placeholder="Ex. You are trapped in the lands of Barovia..."
+        formControlName="description"></textarea>
     </mat-form-field>
     <button mat-fab extended color="accent" disabled type="button">
       <mat-icon>add</mat-icon>
