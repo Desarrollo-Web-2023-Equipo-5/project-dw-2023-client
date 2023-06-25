@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { MainComponent } from './pages/main/main.component';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { CreateCampaignComponent } from './pages/create-campaign/create-campaign.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
       {
         path: 'feed',
         component: FeedComponent,
+      },
+      {
+        path: 'create-post',
+        component: CreatePostComponent,
+      },
+      {
+        path: 'create-campaign',
+        component: CreateCampaignComponent,
       },
       {
         path: '**',

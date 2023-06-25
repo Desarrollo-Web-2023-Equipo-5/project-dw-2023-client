@@ -26,4 +26,8 @@ export class ApiService {
   deleteComment(id: string) {
     return this.http.delete<any>(`${this.baseUrl}/comments/${id}`);
   }
+
+  createCampaign(campaign: any) {
+    return this.http.post<any>(`${this.baseUrl}/campaigns`, campaign);
+  }
 }
