@@ -1,0 +1,32 @@
+<div class="comment gap-2 p-2 d-flex justify-content-between border">
+  <div
+    routerLink="/dashboard/profile/{{ comment.creator.id }}"
+    class="d-flex flex-column justify-content-center align-items-center">
+    <img mat-card-avatar [src]="comment.creator.img" alt="" />
+    <p class="text-center">{{ comment.creator.username }}</p>
+  </div>
+  <div>
+    <p>
+      {{ comment.content }}
+    </p>
+  </div>
+  <div
+    *ngIf="comment.creator.id === activeUser?.id"
+    class="gap-2 d-flex flex-column justify-content-center align-items-center">
+    <button
+      disabled
+      (click)="updateComment()"
+      mat-mini-fab
+      color="primary"
+      aria-label="Example icon button with a menu icon">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      (click)="deleteComment()"
+      mat-mini-fab
+      color="secondary"
+      aria-label="Example icon button with a menu icon">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

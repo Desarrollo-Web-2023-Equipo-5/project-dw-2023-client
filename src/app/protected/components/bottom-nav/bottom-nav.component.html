@@ -13,13 +13,14 @@
       class="position-absolute bottom-0 start-50 translate-middle-x"
       matTooltip="Primary"
       color="accent"
-      aria-label="Example fab with a heart icon">
+      aria-label="Example fab with a heart icon"
+      routerLink="/dashboard/create-post">
       <mat-icon>add</mat-icon>
     </button>
   </div>
   <button
     mat-icon-button
-    routerLink="/dashboard/profile"
+    (click)="openProfile()"
     aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>account_circle</mat-icon>
   </button>

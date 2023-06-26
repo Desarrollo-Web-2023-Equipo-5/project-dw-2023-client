@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-around align-items-center flex-column">
+  <form action="" [formGroup]="commentForm" (ngSubmit)="sendComment()">
+    <mat-form-field class="m-3">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        formControlName="comment"
+        matInput
+        placeholder="Ex. Wow! Such Cool!..."></textarea>
+
+      <button
+        *ngIf="commentForm.get('comment')?.value"
+        matSuffix
+        mat-icon-button
+        aria-label="Send">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <div
+    *ngIf="comments.length; else noComments"
+    class="d-flex flex-column gap-2">
+    <div *ngFor="let comment of comments">
+      <app-comment
+        (deleteCommentEvent)="deleteComment($event)"
+        [comment]="comment"></app-comment>
+    </div>
+  </div>
+  <ng-template #noComments>
+    <p class="text-center">No comments to display</p>
+  </ng-template>
+</div>
