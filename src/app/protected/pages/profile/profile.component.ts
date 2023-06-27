@@ -5,6 +5,9 @@ import { AuthService } from '../../../services/auth.service';
 import { ApiService } from '../../../services/api.service';
 import { mergeMap } from 'rxjs';
 import { FormBuilder } from '@angular/forms';
+import { FileUploadService } from '../../../services/file-upload.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UploadFileDialogComponent } from '../../../shared/upload-file-dialog/upload-file-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +24,8 @@ export class ProfileComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +36,22 @@ export class ProfileComponent {
           this.user = res.user as User;
         },
       });
+  }
+
+  openImageDialog() {
+    if (!this.activeUser || this.activeUser.id !== this.user.id) {
+      return;
+    }
+    const dialogRef = this.dialog.open(UploadFileDialogComponent, {
+      width: '30em',
+      data: {
+        user: this.user,
+      },
+    });
+    dialogRef.afterClosed().subscribe(newImgUrl => {
+      if (newImgUrl) {
+        this.user.img = newImgUrl;
+      }
+    });
   }
 }

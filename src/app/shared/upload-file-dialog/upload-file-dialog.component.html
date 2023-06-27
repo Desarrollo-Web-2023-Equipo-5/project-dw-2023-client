@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Upload New Image</h1>
+<div
+  class="d-flex flex-column justify-content-center aling-items-center gap-3"
+  mat-dialog-content>
+  <input
+    class="form-control"
+    type="file"
+    id="formFile"
+    [disabled]="isUploading"
+    (change)="changeImage($event)" />
+  <button
+    (click)="uploadImage()"
+    [disabled]="!uploadImg || isUploading"
+    color="primary"
+    mat-flat-button>
+    {{ isUploading ? 'Uploading...' : 'Update Image' }}
+  </button>
+  <mat-progress-bar *ngIf="isUploading" mode="indeterminate"></mat-progress-bar>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    mat-dialog-close
+    [mat-dialog-close]="false"
+    cdkFocusInitial>
+    Close
+  </button>
+</div>
