@@ -51,12 +51,18 @@ export class CommentsSectionComponent {
   }
 
   ngOnChanges(): void {
+    this.isLoadingComments = true;
     const commentsQuery = this.postRef
       ? `?postRef=${this.postRef}`
       : `?userRef=${this.userRef}`;
     this.apiService.getComments(commentsQuery).subscribe({
       next: res => {
         this.comments = res.comments;
+        this.isLoadingComments = false;
+      },
+      error: err => {
+        this.toastr.error(err.error.errors[0].msg);
+        this.isLoadingComments = false;
       },
     });
   }
