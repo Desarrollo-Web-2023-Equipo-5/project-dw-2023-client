@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Comment } from '../interfaces/comment';
+import { Notification } from '../interfaces/notification.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +34,9 @@ export class ApiService {
 
   getCampaigns() {
     return this.http.get<any>(`${this.baseUrl}/campaigns`);
+  }
+
+  getNotification() {
+    return this.http.get<Notification>(`${this.baseUrl}/notifications`);
   }
 }
