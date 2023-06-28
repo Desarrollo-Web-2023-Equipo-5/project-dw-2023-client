@@ -1,23 +1,22 @@
 <mat-toolbar
   color="primary"
-  class="z-3 position-fixed bottom-0 start-50 translate-middle-x">
+  class="d-flex justify-content-evenly aling-items-center">
   <button
     mat-icon-button
     routerLink="/dashboard/feed"
     aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>forum</mat-icon>
   </button>
-  <div class="w-100 position-relative">
-    <button
-      mat-fab
-      class="position-absolute bottom-0 start-50 translate-middle-x"
-      matTooltip="Primary"
-      color="accent"
-      aria-label="Example fab with a heart icon"
-      routerLink="/dashboard/create-post">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+
+  <button
+    mat-fab
+    matTooltip="Primary"
+    color="accent"
+    aria-label="Example fab with a heart icon"
+    routerLink="/dashboard/create-post">
+    <mat-icon>add</mat-icon>
+  </button>
+
   <button
     mat-icon-button
     (click)="openProfile()"
