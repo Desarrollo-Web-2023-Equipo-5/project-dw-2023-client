@@ -26,8 +26,9 @@ export class UploadFileDialogComponent {
 
   uploadImage() {
     this.isUploading = true;
+    const { collection, id } = this.data;
     this.fileUploadService
-      .updateImage(this.uploadImg, 'users', this.data.user.id)
+      .updateImage(this.uploadImg, collection, id)
       .subscribe({
         next: imgUrl => {
           this.dialogRef.close(imgUrl);
