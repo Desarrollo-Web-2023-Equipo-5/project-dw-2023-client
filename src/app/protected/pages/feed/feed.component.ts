@@ -36,12 +36,10 @@ export class FeedComponent {
   }
 
   onTabClick(event: MatTabChangeEvent) {
-    console.log(event.tab.textLabel);
     if (event.tab.textLabel === 'Campaigns') {
       this.getCampaigns();
     } else if (event.tab.textLabel === 'Looking for group') {
       this.getLfgPosts();
     }
-    console.log('Tab clicked', event);
   }
 }

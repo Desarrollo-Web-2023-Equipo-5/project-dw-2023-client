@@ -17,7 +17,7 @@ export class CommentsSectionComponent {
   }
 
   @Input() userRef: string | null = null;
-  @Input() postRef: string | null = null;
+  @Input() postRef: string | null | undefined = null;
 
   comments: Comment[] = [];
   isLoadingComments: boolean = false;

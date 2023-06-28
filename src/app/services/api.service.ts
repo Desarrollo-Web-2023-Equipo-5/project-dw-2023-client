@@ -42,4 +42,8 @@ export class ApiService {
   getCampaigns() {
     return this.http.get<any>(`${this.baseUrl}/campaigns`);
   }
+
+  getCampaign(id: string) {
+    return this.http.get<any>(`${this.baseUrl}/campaigns/${id}`);
+  }
 }

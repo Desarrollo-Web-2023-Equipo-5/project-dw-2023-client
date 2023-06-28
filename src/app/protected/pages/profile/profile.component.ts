@@ -47,7 +47,8 @@ export class ProfileComponent {
     const dialogRef = this.dialog.open(UploadFileDialogComponent, {
       width: '30em',
       data: {
-        user: this.user,
+        id: this.user.id,
+        collection: 'users',
       },
     });
     dialogRef.afterClosed().subscribe(newImgUrl => {
