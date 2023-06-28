@@ -12,13 +12,15 @@
       <mat-card-subtitle>@{{ user.username }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions *ngIf="activeUser?.id !== user.id">
-      <button color="accent" mat-flat-button>INVITE TO GAME</button>
+      <button *ngIf="user.isLookingForGroup" color="accent" mat-flat-button>
+        INVITE TO GAME
+      </button>
     </mat-card-actions>
     <mat-card-actions *ngIf="activeUser?.id === user.id">
       <button
         *ngIf="!user.isLookingForGroup"
         [disabled]="isLoadingLookingForGroup"
-        color="primary"
+        color="accent"
         mat-flat-button
         (click)="toogleLookingForGroup()">
         LOOK FOR A GROUP

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent {
+  notifications: number | undefined = undefined;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
