@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Comment } from '../../../interfaces/comment';
 import { ApiService } from '../../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { delay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-comments-section',
@@ -16,9 +17,10 @@ export class CommentsSectionComponent {
   }
 
   @Input() userRef: string | null = null;
-  @Input() postRef: string | null = null;
+  @Input() postRef: string | null | undefined = null;
 
   comments: Comment[] = [];
+  isLoadingComments: boolean = false;
 
   commentForm = this.fb.group({
     comment: [''],
@@ -32,23 +34,35 @@ export class CommentsSectionComponent {
   ) {}
 
   ngOnInit(): void {
+    this.isLoadingComments = true;
     const commentsQuery = this.postRef
       ? `?postRef=${this.postRef}`
       : `?userRef=${this.userRef}`;
     this.apiService.getComments(commentsQuery).subscribe({
       next: res => {
         this.comments = res.comments;
+        this.isLoadingComments = false;
+      },
+      error: err => {
+        this.toastr.error(err.error.errors[0].msg);
+        this.isLoadingComments = false;
       },
     });
   }
 
   ngOnChanges(): void {
+    this.isLoadingComments = true;
     const commentsQuery = this.postRef
       ? `?postRef=${this.postRef}`
       : `?userRef=${this.userRef}`;
     this.apiService.getComments(commentsQuery).subscribe({
       next: res => {
         this.comments = res.comments;
+        this.isLoadingComments = false;
+      },
+      error: err => {
+        this.toastr.error(err.error.errors[0].msg);
+        this.isLoadingComments = false;
       },
     });
   }

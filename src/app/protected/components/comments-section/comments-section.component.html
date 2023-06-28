@@ -1,4 +1,6 @@
-<div class="d-flex justify-content-around align-items-center flex-column">
+<div
+  *ngIf="!isLoadingComments; else loadingComments"
+  class="d-flex justify-content-around align-items-center flex-column">
   <form action="" [formGroup]="commentForm" (ngSubmit)="sendComment()">
     <mat-form-field class="m-3">
       <mat-label>Leave a comment</mat-label>
@@ -29,3 +31,8 @@
     <p class="text-center">No comments to display</p>
   </ng-template>
 </div>
+<ng-template #loadingComments>
+  <div class="p-5 d-flex justify-content-center align-items-center flex-column">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

@@ -1,12 +1,14 @@
 <mat-toolbar class="d-flex justify-content-between" color="primary">
-  <span>DnT</span>
+  <span><img class="brand" src="../../../../assets/logo.svg" alt="" /></span>
   <div>
     <button
       mat-icon-button
       class="example-icon favorite-icon"
       routerLink="/dashboard/notifications"
       aria-label="Example icon-button with heart icon">
-      <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+      <mat-icon [matBadge]="notifications" matBadgeColor="warn"
+        >notifications</mat-icon
+      >
     </button>
     <button
       mat-icon-button

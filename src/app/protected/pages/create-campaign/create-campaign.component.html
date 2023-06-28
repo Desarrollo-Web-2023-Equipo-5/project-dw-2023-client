@@ -25,10 +25,12 @@
         placeholder="Ex. You are trapped in the lands of Barovia..."
         formControlName="description"></textarea>
     </mat-form-field>
-    <button mat-fab extended color="accent" disabled type="button">
-      <mat-icon>add</mat-icon>
-      Upload Image
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="campaignForm.invalid">
+      Post
     </button>
-    <button mat-raised-button color="primary" type="submit">Post</button>
   </form>
 </div>

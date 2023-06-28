@@ -3,17 +3,36 @@
     <mat-card-header>
       <img
         class="profile-avatar"
+        [style]="activeUser?.id === user.id ? 'cursor: pointer' : ''"
         mat-card-avatar
-        [src]="
-          user.img ||
-          'https://www.intra-tp.com/wp-content/uploads/2017/02/no-avatar.png'
-        "
-        alt="A user avatar" />
+        [src]="user.img"
+        alt="A user avatar"
+        (click)="openImageDialog()" />
       <mat-card-title>{{ user.username }}</mat-card-title>
       <mat-card-subtitle>@{{ user.username }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions *ngIf="activeUser?.id !== user.id">
-      <button color="accent" mat-flat-button>INVITE TO GAME</button>
+      <button *ngIf="user.isLookingForGroup" color="accent" mat-flat-button>
+        INVITE TO GAME
+      </button>
+    </mat-card-actions>
+    <mat-card-actions *ngIf="activeUser?.id === user.id">
+      <button
+        *ngIf="!user.isLookingForGroup"
+        [disabled]="isLoadingLookingForGroup"
+        color="accent"
+        mat-flat-button
+        (click)="toogleLookingForGroup()">
+        LOOK FOR A GROUP
+      </button>
+      <button
+        *ngIf="user.isLookingForGroup"
+        [disabled]="isLoadingLookingForGroup"
+        color="warn"
+        mat-flat-button
+        (click)="toogleLookingForGroup()">
+        STOP LOOKING FOR GROUP
+      </button>
     </mat-card-actions>
   </mat-card>
 
