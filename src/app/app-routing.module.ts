@@ -19,11 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: 'notifications',
-    component: NotificationsComponent,
-    canActivate: [validateTokenGuard],
-  },
-  {
     path: '**',
     redirectTo: 'landing',
   },

@@ -5,6 +5,7 @@ import { FeedComponent } from './pages/feed/feed.component';
 import { MainComponent } from './pages/main/main.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { CreateCampaignComponent } from './pages/create-campaign/create-campaign.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'create-campaign',
         component: CreateCampaignComponent,
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent,
       },
       {
         path: '**',
