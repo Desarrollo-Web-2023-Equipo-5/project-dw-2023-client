@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Campaign } from '../../../interfaces/campaign.interface';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ApiService } from 'src/app/services/api.service';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-feed',
@@ -27,7 +28,11 @@ export class FeedComponent {
   }
 
   getLfgPosts() {
-    console.log('getLfgPosts');
+    this.api.getLookingForGroupUsers().subscribe({
+      next: resp => {
+        this.lfgPosts = resp.users;
+      },
+    });
   }
 
   onTabClick(event: MatTabChangeEvent) {

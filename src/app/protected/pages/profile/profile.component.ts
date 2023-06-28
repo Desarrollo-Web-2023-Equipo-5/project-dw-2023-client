@@ -17,6 +17,8 @@ import { UploadFileDialogComponent } from '../../../shared/upload-file-dialog/up
 export class ProfileComponent {
   user!: User;
 
+  isLoadingLookingForGroup = false;
+
   get activeUser(): User | null {
     return this.authService.activeUser;
   }
@@ -53,5 +55,25 @@ export class ProfileComponent {
         this.user.img = newImgUrl;
       }
     });
+  }
+
+  toogleLookingForGroup() {
+    if (!this.activeUser || this.activeUser.id !== this.user.id) {
+      return;
+    }
+    this.isLoadingLookingForGroup = true;
+    this.apiService
+      .updateUser(this.user.id, {
+        isLookingForGroup: !this.user.isLookingForGroup,
+      })
+      .subscribe({
+        next: res => {
+          this.user.isLookingForGroup = res.user.isLookingForGroup;
+          this.isLoadingLookingForGroup = false;
+        },
+        error: err => {
+          this.isLoadingLookingForGroup = false;
+        },
+      });
   }
 }
