@@ -15,9 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { CreateCampaignComponent } from './pages/create-campaign/create-campaign.component';
+import { CampaignDetailsComponent } from './pages/campaign-details/campaign-details.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { MyPostsComponent } from './pages/my-posts/my-posts.component';
-
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -33,6 +33,7 @@ import { MyPostsComponent } from './pages/my-posts/my-posts.component';
     CreateCampaignComponent,
     NotificationsComponent,
     MyPostsComponent,
+    CampaignDetailsComponent,
   ],
   imports: [
     CommonModule,

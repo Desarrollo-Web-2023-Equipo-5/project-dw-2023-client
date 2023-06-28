@@ -1,7 +1,7 @@
 import { User } from './user';
 
 export interface Campaign {
-  _id?: number;
+  _id?: string;
   creator: User;
   title: string;
   description: string;
@@ -9,4 +9,5 @@ export interface Campaign {
   currentPlayers: User[];
   createdAt?: number;
   updatedAt?: number;
+  img?: string;
 }
