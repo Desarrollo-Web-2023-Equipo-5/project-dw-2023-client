@@ -15,6 +15,14 @@ export class ApiService {
     return this.http.get<any>(`${this.baseUrl}/users/${id}`);
   }
 
+  updateUser(id: string, user: any) {
+    return this.http.put<any>(`${this.baseUrl}/users/${id}`, user);
+  }
+
+  getLookingForGroupUsers() {
+    return this.http.get<any>(`${this.baseUrl}/users?lfg=true`);
+  }
+
   createComment(comment: Comment) {
     return this.http.post<any>(`${this.baseUrl}/comments`, comment);
   }
