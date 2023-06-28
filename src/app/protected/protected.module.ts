@@ -16,7 +16,7 @@ import { CommentsSectionComponent } from './components/comments-section/comments
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { CreateCampaignComponent } from './pages/create-campaign/create-campaign.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-
+import { MyPostsComponent } from './pages/my-posts/my-posts.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
     CreatePostComponent,
     CreateCampaignComponent,
     NotificationsComponent,
+    MyPostsComponent,
   ],
   imports: [
     CommonModule,
