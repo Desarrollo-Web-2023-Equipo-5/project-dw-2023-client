@@ -15,6 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommentsSectionComponent } from './components/comments-section/comments-section.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { CreateCampaignComponent } from './pages/create-campaign/create-campaign.component';
+import { UserComponent } from './components/user/user.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { CreateCampaignComponent } from './pages/create-campaign/create-campaign
     CommentsSectionComponent,
     CreatePostComponent,
     CreateCampaignComponent,
+    UserComponent,
+    UserListComponent,
   ],
   imports: [
     CommonModule,
