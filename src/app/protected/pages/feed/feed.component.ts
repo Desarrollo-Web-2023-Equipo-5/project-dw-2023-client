@@ -21,8 +21,8 @@ export class FeedComponent {
 
   getCampaigns() {
     this.api.getCampaigns().subscribe({
-      next: resp => {
-        this.campaignPosts = resp.campaigns;
+      next: (campaigns: Campaign[]) => {
+        this.campaignPosts = campaigns;
       },
     });
   }

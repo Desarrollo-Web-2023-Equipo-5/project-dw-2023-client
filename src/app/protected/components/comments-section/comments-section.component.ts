@@ -39,8 +39,8 @@ export class CommentsSectionComponent {
       ? `?postRef=${this.postRef}`
       : `?userRef=${this.userRef}`;
     this.apiService.getComments(commentsQuery).subscribe({
-      next: res => {
-        this.comments = res.comments;
+      next: (comments: Comment[]) => {
+        this.comments = comments;
         this.isLoadingComments = false;
       },
       error: err => {
@@ -56,8 +56,8 @@ export class CommentsSectionComponent {
       ? `?postRef=${this.postRef}`
       : `?userRef=${this.userRef}`;
     this.apiService.getComments(commentsQuery).subscribe({
-      next: res => {
-        this.comments = res.comments;
+      next: (comments: Comment[]) => {
+        this.comments = comments;
         this.isLoadingComments = false;
       },
       error: err => {
@@ -76,8 +76,8 @@ export class CommentsSectionComponent {
       content: this.commentForm.value.comment,
     };
     this.apiService.createComment(newComment).subscribe({
-      next: res => {
-        newComment.id = res.id;
+      next: (id: string) => {
+        newComment.id = id;
         this.comments.push(newComment);
         this.commentForm.reset();
       },
