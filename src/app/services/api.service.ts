@@ -67,17 +67,15 @@ export class ApiService {
     );
   }
 
+  getNotification() {
+    return this.http.get<Notification>(`${this.baseUrl}/notifications`);
+  }
+
   getCampaign(id: string): Observable<Campaign> {
     return this.http.get<any>(`${this.baseUrl}/campaigns/${id}`).pipe(
       map((res: any) => {
         return res.campaign;
       })
     );
-  getNotification() {
-    return this.http.get<Notification>(`${this.baseUrl}/notifications`);
-  }
-
-  getCampaign(id: string) {
-    return this.http.get<any>(`${this.baseUrl}/campaigns/${id}`);
   }
 }
