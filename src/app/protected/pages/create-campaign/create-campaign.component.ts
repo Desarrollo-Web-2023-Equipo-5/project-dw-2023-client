@@ -36,8 +36,8 @@ export class CreateCampaignComponent {
       creator: this.user.id,
     };
     this.api.createCampaign(campaign).subscribe({
-      next: resp => {
-        if (resp.id) {
+      next: (id: string) => {
+        if (id) {
           this.toastr.success('Campaign created successfully!');
           this.campaignForm.reset();
         }
