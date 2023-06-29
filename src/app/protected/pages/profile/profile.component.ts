@@ -34,8 +34,8 @@ export class ProfileComponent {
     this.activatedRoute.params
       .pipe(mergeMap(params => this.apiService.getUserById(params['id'])))
       .subscribe({
-        next: res => {
-          this.user = res.user as User;
+        next: (user: User) => {
+          this.user = user;
         },
       });
   }
