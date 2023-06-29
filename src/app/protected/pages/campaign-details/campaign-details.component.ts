@@ -26,8 +26,8 @@ export class CampaignDetailsComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.api.getCampaign(params['id']).subscribe(res => {
-        this.campaign = res.campaign;
+      this.api.getCampaign(params['id']).subscribe((campaign: Campaign) => {
+        this.campaign = campaign;
       });
     });
   }
