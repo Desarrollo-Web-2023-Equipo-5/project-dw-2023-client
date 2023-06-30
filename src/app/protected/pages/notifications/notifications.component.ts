@@ -25,4 +25,6 @@ export class NotificationsComponent implements OnInit {
   acceptNotification(notification: Notification) {}
 
   rejectNotification(notification: Notification) {}
+
+  deleteNotification(notification: Notification) {}
 }

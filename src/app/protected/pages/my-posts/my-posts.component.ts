@@ -21,7 +21,7 @@ export class MyPostsComponent {
   getCampaigns() {
     this.api.getCampaigns().subscribe({
       next: resp => {
-        this.campaignPosts = resp.campaigns;
+        this.campaignPosts = resp;
       },
     });
   }
