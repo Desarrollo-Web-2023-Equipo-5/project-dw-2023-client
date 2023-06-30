@@ -1,10 +1,10 @@
-<mat-tab-group (selectedTabChange)="onTabClick($event)" mat-align-tabs="center">
-  <mat-tab label="MyPosts">
-    <div class="content">
-      <app-post-list [filteredPosts]="campaignPosts"></app-post-list>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="My Posts">
+    <div *ngIf="campaignPosts.length === 0" class="text-center mt-5">
+      <span>You currently have no posts</span>
     </div>
-    <div class="content">
-      <app-post-list [filteredPosts]="lfgPosts"></app-post-list>
+    <div *ngIf="campaignPosts.length > 0">
+      <app-post-list [filteredPosts]="campaignPosts"></app-post-list>
     </div>
   </mat-tab>
 </mat-tab-group>
