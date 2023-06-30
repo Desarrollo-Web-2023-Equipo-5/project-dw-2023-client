@@ -27,6 +27,16 @@ export class ApiService {
     return this.http.put<any>(`${this.baseUrl}/users/${id}`, user);
   }
 
+  getCurrentUserCampaigns(id: string): Observable<Campaign[]> {
+    return this.http
+      .get<Campaign[]>(`${this.baseUrl}/users/${id}/campaigns`)
+      .pipe(
+        map((res: any) => {
+          return res.campaigns;
+        })
+      );
+  }
+
   getLookingForGroupUsers(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/users?lfg=true`);
   }
