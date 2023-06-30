@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Comment } from '../interfaces/comment';
+import { Notification } from '../interfaces/notification.interface';
 import { Observable, map } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Campaign } from '../interfaces/campaign.interface';
@@ -24,6 +25,16 @@ export class ApiService {
 
   updateUser(id: string, user: any) {
     return this.http.put<any>(`${this.baseUrl}/users/${id}`, user);
+  }
+
+  getCurrentUserCampaigns(id: string): Observable<Campaign[]> {
+    return this.http
+      .get<Campaign[]>(`${this.baseUrl}/users/${id}/campaigns`)
+      .pipe(
+        map((res: any) => {
+          return res.campaigns;
+        })
+      );
   }
 
   getLookingForGroupUsers(): Observable<any> {
@@ -64,6 +75,10 @@ export class ApiService {
         return res.campaigns;
       })
     );
+  }
+
+  getNotification() {
+    return this.http.get<Notification>(`${this.baseUrl}/notifications`);
   }
 
   getCampaign(id: string): Observable<Campaign> {

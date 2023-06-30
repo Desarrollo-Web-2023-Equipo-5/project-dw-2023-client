@@ -1,0 +1,21 @@
+<mat-list>
+  <mat-list-item *ngFor="let notification of notifications">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="notification-info">
+          <h3 matLine>{{ notification.title }}</h3>
+        </div>
+      </div>
+      <div>
+        <button
+          mat-button
+          color="primary"
+          (click)="acceptNotification(notification)"></button>
+        <button
+          mat-button
+          color="warn"
+          (click)="rejectNotification(notification)"></button>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
