@@ -1,30 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Notification } from 'src/app/interfaces/notification.interface';
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit {
-  notifications: Notification[] = [];
-  constructor(private api: ApiService) {}
-
-  ngOnInit(): void {
-    this.getNotifications();
+  get activeUser() {
+    return this.authService.activeUser;
   }
 
-  getNotifications() {
-    this.api.getNotification().subscribe({
-      next: (resp: Notification) => {
-        this.notifications = [resp];
+  requests: any[] = [];
+  invites: any[] = [];
+  constructor(private api: ApiService, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.getRequests();
+    this.getInvites();
+  }
+
+  getRequests() {
+    this.api.getRequests(this.activeUser.id).subscribe({
+      next: (requests: any) => {
+        this.requests = requests;
       },
     });
   }
 
-  acceptNotification(notification: Notification) {}
+  getInvites() {
+    this.api.getInvites(this.activeUser.id).subscribe({
+      next: (invites: any) => {
+        this.invites = invites;
+      },
+    });
+  }
 
-  rejectNotification(notification: Notification) {}
+  acceptRequest(request: any) {}
 
-  deleteNotification(notification: Notification) {}
+  rejectRequest(request: any) {}
+
+  deleteRequest(request: any) {}
 }

@@ -9,7 +9,11 @@
     Create Campaign
   </button>
   <p>OR</p>
-  <button mat-fab extended color="accent">
+  <button
+    mat-fab
+    extended
+    color="accent"
+    routerLink="/dashboard/profile/{{ activeUser.id }}">
     <mat-icon>add</mat-icon>
     Look for a Group
   </button>

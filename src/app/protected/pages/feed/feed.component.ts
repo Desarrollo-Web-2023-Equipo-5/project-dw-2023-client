@@ -13,7 +13,7 @@ export class FeedComponent {
   constructor(private api: ApiService) {}
 
   campaignPosts: Campaign[] = [];
-  lfgPosts: Campaign[] = [];
+  lfgPosts: User[] = [];
 
   ngOnInit(): void {
     this.getCampaigns();

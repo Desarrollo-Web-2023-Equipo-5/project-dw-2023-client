@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Campaign } from '../../../interfaces/campaign.interface';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-post-list',
@@ -8,4 +9,5 @@ import { Campaign } from '../../../interfaces/campaign.interface';
 })
 export class PostListComponent {
   @Input() filteredPosts: Campaign[] = [];
+  @Input() lookingForGroup: User[] = [];
 }
