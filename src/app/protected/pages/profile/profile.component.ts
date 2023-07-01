@@ -13,7 +13,6 @@ import { CampaignSelectorDialogComponent } from '../../../shared/campaign-select
 import { Request } from '../../../interfaces/request';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -42,14 +41,14 @@ export class ProfileComponent {
       .subscribe({
         next: (user: User) => {
           this.user = user;
+          this.apiService
+            .getCharactersheetByUserId(this.user!.id)
+            .subscribe(character => {
+              if (character) {
+                this.character = character;
+              }
+            });
         },
-      });
-    this.apiService
-      .getCharactersheetByUserId(this.activeUser!.id)
-      .subscribe(character => {
-        if (character) {
-          this.character = character;
-        }
       });
   }
 
