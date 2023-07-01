@@ -6,6 +6,7 @@ import { Notification } from '../interfaces/notification.interface';
 import { Observable, map } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Campaign } from '../interfaces/campaign.interface';
+import { Request } from '../interfaces/request';
 
 @Injectable({
   providedIn: 'root',
@@ -87,5 +88,22 @@ export class ApiService {
         return res.campaign;
       })
     );
+  }
+
+  sendRequest(request: Request) {
+    return this.http.post<any>(
+      `${this.baseUrl}/join-campaign-requests/`,
+      request
+    );
+  }
+
+  getRequests(id: string): Observable<Request[]> {
+    return this.http
+      .get<Request[]>(`${this.baseUrl}/join-campaign-requests/user/${id}`)
+      .pipe(
+        map((res: any) => {
+          return res.joinRequests;
+        })
+      );
   }
 }

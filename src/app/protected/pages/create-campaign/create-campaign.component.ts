@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -24,7 +25,8 @@ export class CreateCampaignComponent {
     private fb: FormBuilder,
     private api: ApiService,
     private auth: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   createPost() {
@@ -40,6 +42,7 @@ export class CreateCampaignComponent {
         if (id) {
           this.toastr.success('Campaign created successfully!');
           this.campaignForm.reset();
+          this.router.navigate(['/dashboard/campaign-details', id]);
         }
       },
       error: err => {
