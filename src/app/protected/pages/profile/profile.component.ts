@@ -8,6 +8,9 @@ import { FormBuilder } from '@angular/forms';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadFileDialogComponent } from '../../../shared/upload-file-dialog/upload-file-dialog.component';
+import { CampaignSelectorDialogComponent } from '../../../shared/campaign-selector-dialog/campaign-selector-dialog.component';
+import { Request } from '../../../interfaces/request';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +30,8 @@ export class ProfileComponent {
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -76,5 +80,41 @@ export class ProfileComponent {
           this.isLoadingLookingForGroup = false;
         },
       });
+  }
+
+  inviteToCampaign() {
+    if (this.activeUser?.id === this.user.id) {
+      return;
+    }
+    const dialog = this.dialog.open(CampaignSelectorDialogComponent, {
+      width: '30em',
+      data: {
+        userId: this.activeUser?.id,
+        toInviteName: this.user.username,
+      },
+    });
+    dialog.afterClosed().subscribe({
+      next: campaignId => {
+        if (!campaignId) {
+          return;
+        }
+        const newRequest: Request = {
+          user: this.user.id,
+          campaign: campaignId,
+          isSentByCreator: true,
+        };
+
+        this.apiService.sendRequest(newRequest).subscribe({
+          next: res => {
+            if (res.id) {
+              this.toast.success('Invitation to campaign sent!');
+            }
+          },
+          error: err => {
+            this.toast.error(err.error.errors[0].msg);
+          },
+        });
+      },
+    });
   }
 }

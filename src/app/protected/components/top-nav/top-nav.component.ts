@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -8,9 +9,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent {
-  notifications: number | undefined = undefined;
+  get activeUser() {
+    return this.authService.activeUser;
+  }
 
-  constructor(private authService: AuthService, private router: Router) {}
+  notifications: number = 0;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private api: ApiService
+  ) {}
+
+  ngOnInit(): void {
+    this.getRequests();
+    this.getInvites();
+  }
+
+  getRequests() {
+    this.api.getRequests(this.activeUser.id).subscribe({
+      next: (requests: any) => {
+        const requestsCount = requests.length;
+        this.notifications += requestsCount;
+      },
+    });
+  }
+
+  getInvites() {
+    this.api.getInvites(this.activeUser.id).subscribe({
+      next: (invites: any) => {
+        const invitesCount = invites.length;
+        this.notifications += invitesCount;
+      },
+    });
+  }
 
   logout() {
     this.router.navigateByUrl('/auth/login');

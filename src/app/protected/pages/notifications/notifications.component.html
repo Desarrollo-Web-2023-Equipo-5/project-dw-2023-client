@@ -1,21 +1,86 @@
-<mat-list>
-  <mat-list-item *ngFor="let notification of notifications">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="notification-info">
-          <h3 matLine>{{ notification.title }}</h3>
-        </div>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Requests">
+    <ng-template matTabContent>
+      <div *ngIf="requests.length === 0" class="text-center mt-5">
+        <span>You currently have no requests</span>
       </div>
-      <div>
-        <button
-          mat-button
-          color="primary"
-          (click)="acceptNotification(notification)"></button>
-        <button
-          mat-button
-          color="warn"
-          (click)="rejectNotification(notification)"></button>
+      <div class="d-flex flex-column p-3" *ngFor="let request of requests">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ request.campaign.title }}</mat-card-title>
+            <mat-card-subtitle
+              routerLink="/dashboard/profile/{{ request.user.id }}"
+              >{{ request.user.username }}</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-actions class="d-flex justify-content-between">
+            <button
+              (click)="acceptRequest(request)"
+              color="primary"
+              mat-mini-fab
+              aria-label="Accept icon button with a check icon">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button
+              routerLink="/dashboard/campaign-details/{{
+                request.campaign._id
+              }}"
+              color="accent"
+              mat-mini-fab
+              aria-label="Accept icon button with a check icon">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button
+              (click)="rejectRequest(request)"
+              color="warn"
+              mat-mini-fab
+              aria-label="Reject icon button with a check icon">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
       </div>
-    </div>
-  </mat-list-item>
-</mat-list>
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Invites">
+    <ng-template matTabContent>
+      <div *ngIf="invites.length === 0" class="text-center mt-5">
+        <span>You currently have no invites</span>
+      </div>
+      <div class="d-flex flex-column p-3" *ngFor="let invite of invites">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ invite.campaign.title }}</mat-card-title>
+            <mat-card-subtitle>{{
+              invite.status | uppercase
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions class="d-flex justify-content-between">
+            <button
+              (click)="acceptRequest(invite)"
+              color="primary"
+              mat-mini-fab
+              aria-label="Accept icon button with a check icon">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button
+              routerLink="/dashboard/campaign-details/{{ invite.campaign._id }}"
+              color="accent"
+              mat-mini-fab
+              aria-label="Accept icon button with a check icon">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button
+              (click)="rejectRequest(invite)"
+              color="warn"
+              mat-mini-fab
+              aria-label="Reject icon button with a check icon">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -12,7 +12,11 @@
       <mat-card-subtitle>@{{ user.username }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions *ngIf="activeUser?.id !== user.id">
-      <button *ngIf="user.isLookingForGroup" color="accent" mat-flat-button>
+      <button
+        *ngIf="user.isLookingForGroup"
+        color="accent"
+        mat-flat-button
+        (click)="inviteToCampaign()">
         INVITE TO GAME
       </button>
     </mat-card-actions>
