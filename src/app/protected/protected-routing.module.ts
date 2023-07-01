@@ -8,6 +8,7 @@ import { CreateCampaignComponent } from './pages/create-campaign/create-campaign
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { MyPostsComponent } from './pages/my-posts/my-posts.component';
 import { CampaignDetailsComponent } from './pages/campaign-details/campaign-details.component';
+import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'campaign-details/:id',
         component: CampaignDetailsComponent,
+      },
+      {
+        path: 'character-sheet',
+        component: CharacterSheetComponent,
       },
       {
         path: '**',

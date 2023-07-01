@@ -43,7 +43,28 @@
       </ng-template>
     </mat-tab>
     <mat-tab label="Character Sheet">
-      <ng-template matTabContent> Content 2 </ng-template>
+      <ng-template matTabContent>
+        <mat-list class="example-list-wrapping" *ngIf="character">
+          <mat-list-item lines="2">
+            <span matListItemTitle>Character Name</span>
+            <span>
+              {{ character.characterName }}
+            </span>
+          </mat-list-item>
+          <mat-list-item lines="2">
+            <span matListItemTitle>Description</span>
+            {{ character.characterDescription }}
+          </mat-list-item>
+          <mat-list-item lines="2">
+            <span matListItemTitle>Character Race</span>
+            {{ character.characterRace }}
+          </mat-list-item>
+          <mat-list-item lines="2">
+            <span matListItemTitle>Character Class</span>
+            {{ character.characterClass }}
+          </mat-list-item>
+        </mat-list></ng-template
+      >
     </mat-tab>
   </mat-tab-group>
 </div>

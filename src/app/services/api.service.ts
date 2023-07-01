@@ -88,4 +88,16 @@ export class ApiService {
       })
     );
   }
+
+  getCharactersheetByUserId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/users/${id}/characters`).pipe(
+      map((res: any) => {
+        return res.characters[0];
+      })
+    );
+  }
+
+  updateCharactersheet(id: string, character: any) {
+    return this.http.put<any>(`${this.baseUrl}/characters/${id}`, character);
+  }
 }

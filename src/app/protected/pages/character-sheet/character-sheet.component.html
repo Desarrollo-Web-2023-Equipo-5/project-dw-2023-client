@@ -1,0 +1,56 @@
+<form
+  [formGroup]="characterForm"
+  class="d-flex gap-3 flex-column justify-content-center align-items-center p-3"
+  (ngSubmit)="updateCharacter()">
+  <mat-form-field>
+    <mat-label>Character Name</mat-label>
+    <input
+      matInput
+      [disabled]="!editMode"
+      formControlName="characterName"
+      placeholder="Ex. Dorian Storm" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Character Race</mat-label>
+    <input
+      matInput
+      [disabled]="!editMode"
+      formControlName="characterRace"
+      placeholder="Ex. Air Genasi" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Character Description</mat-label>
+    <textarea
+      matInput
+      [disabled]="!editMode"
+      formControlName="characterDescription"
+      placeholder="Ex. A noble bard who escaped his family, and is in pursuit of a greater purpose"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Character Class</mat-label>
+    <mat-select [disabled]="!editMode" formControlName="characterClass">
+      <mat-option *ngFor="let class of classOptions" [value]="class">{{
+        class
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="d-flex align-items-center gap-3">
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!editMode"
+      type="submit">
+      Save
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="
+        editMode = !editMode;
+        characterForm.enabled ? characterForm.disable() : characterForm.enable()
+      ">
+      Edit
+    </button>
+  </div>
+</form>

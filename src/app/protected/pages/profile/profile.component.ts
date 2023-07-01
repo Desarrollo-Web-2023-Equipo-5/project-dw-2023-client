@@ -8,6 +8,7 @@ import { FormBuilder } from '@angular/forms';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UploadFileDialogComponent } from '../../../shared/upload-file-dialog/upload-file-dialog.component';
+import { Character } from 'src/app/interfaces/character.interface';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ import { UploadFileDialogComponent } from '../../../shared/upload-file-dialog/up
 })
 export class ProfileComponent {
   user!: User;
-
+  character!: Character;
   isLoadingLookingForGroup = false;
 
   get activeUser(): User | null {
@@ -37,6 +38,13 @@ export class ProfileComponent {
         next: (user: User) => {
           this.user = user;
         },
+      });
+    this.apiService
+      .getCharactersheetByUserId(this.activeUser!.id)
+      .subscribe(character => {
+        if (character) {
+          this.character = character;
+        }
       });
   }
 
