@@ -18,6 +18,8 @@ import { CreateCampaignComponent } from './pages/create-campaign/create-campaign
 import { CampaignDetailsComponent } from './pages/campaign-details/campaign-details.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { MyPostsComponent } from './pages/my-posts/my-posts.component';
+import { CharacterSheetComponent } from './pages/character-sheet/character-sheet.component';
+
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -34,6 +36,7 @@ import { MyPostsComponent } from './pages/my-posts/my-posts.component';
     NotificationsComponent,
     MyPostsComponent,
     CampaignDetailsComponent,
+    CharacterSheetComponent,
   ],
   imports: [
     CommonModule,
