@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Campaign } from '../../../interfaces/campaign.interface';
+import { User } from '../../../interfaces/user';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-post',
@@ -8,4 +10,13 @@ import { Campaign } from '../../../interfaces/campaign.interface';
 })
 export class PostComponent {
   @Input() post?: Campaign;
+  @Input() user!: User;
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    if (this.user) {
+      // TODO: get user character
+    }
+  }
 }
