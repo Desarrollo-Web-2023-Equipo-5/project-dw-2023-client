@@ -78,10 +78,6 @@ export class ApiService {
     );
   }
 
-  getNotification() {
-    return this.http.get<Notification>(`${this.baseUrl}/notifications`);
-  }
-
   getCampaign(id: string): Observable<Campaign> {
     return this.http.get<any>(`${this.baseUrl}/campaigns/${id}`).pipe(
       map((res: any) => {
@@ -91,19 +87,24 @@ export class ApiService {
   }
 
   sendRequest(request: Request) {
-    return this.http.post<any>(
-      `${this.baseUrl}/join-campaign-requests/`,
-      request
-    );
+    return this.http.post<any>(`${this.baseUrl}/requests`, request);
   }
 
   getRequests(id: string): Observable<Request[]> {
     return this.http
-      .get<Request[]>(`${this.baseUrl}/join-campaign-requests/user/${id}`)
+      .get<Request[]>(`${this.baseUrl}/requests/for-creator/${id}`)
       .pipe(
         map((res: any) => {
-          return res.joinRequests;
+          return res.requests;
         })
       );
+  }
+
+  getInvites(id: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/requests/for-user/${id}`).pipe(
+      map((res: any) => {
+        return res.requests;
+      })
+    );
   }
 }
