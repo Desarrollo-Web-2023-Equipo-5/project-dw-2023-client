@@ -1,8 +1,8 @@
 <div
   *ngIf="!isLoadingComments; else loadingComments"
-  class="d-flex justify-content-around align-items-center flex-column">
+  class="d-flex p-2 flex-column">
   <form action="" [formGroup]="commentForm" (ngSubmit)="sendComment()">
-    <mat-form-field class="m-3">
+    <mat-form-field class="p-3 w-100">
       <mat-label>Leave a comment</mat-label>
       <textarea
         formControlName="comment"
