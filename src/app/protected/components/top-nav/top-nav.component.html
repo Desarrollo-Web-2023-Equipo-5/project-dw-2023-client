@@ -1,0 +1,43 @@
+<mat-toolbar class="d-flex justify-content-between" color="primary">
+  <span><img class="brand" src="../../../../assets/logo.svg" alt="" /></span>
+  <div>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      routerLink="/dashboard/notifications"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon
+        [matBadge]="notifications ? notifications : undefined"
+        matBadgeColor="warn"
+        >notifications</mat-icon
+      >
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      routerLink="/dashboard/my-posts"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon>chat_bubble</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+      routerLink="/dashboard/character-sheet">
+      <mat-icon>description</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      class="example-icon"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

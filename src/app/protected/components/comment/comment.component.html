@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex justify-content-between gap-2">
+      <div
+        routerLink="/dashboard/profile/{{ comment.creator.id }}"
+        class="d-flex flex-column justify-content-center align-items-center">
+        <img mat-card-avatar [src]="comment.creator.img" alt="" />
+        <p class="text-center fw-bolder">{{ comment.creator.username }}</p>
+      </div>
+      <div class="w-100">
+        <p class="w-100 h-100">
+          {{ comment.content }}
+        </p>
+      </div>
+      <div
+        *ngIf="comment.creator.id === activeUser?.id"
+        class="gap-2 d-flex flex-column justify-content-center align-items-center">
+        <button
+          (click)="updateComment()"
+          mat-mini-fab
+          color="primary"
+          aria-label="Example icon button with a menu icon">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (click)="deleteComment()"
+          mat-mini-fab
+          color="warn"
+          aria-label="Example icon button with a menu icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

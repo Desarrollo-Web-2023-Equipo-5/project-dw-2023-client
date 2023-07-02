@@ -1,0 +1,12 @@
+<mat-tab-group (selectedTabChange)="onTabClick($event)" mat-align-tabs="center">
+  <mat-tab label="Campaigns">
+    <div class="content">
+      <app-post-list [filteredPosts]="campaignPosts"></app-post-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="Looking for group">
+    <div class="content">
+      <app-post-list [lookingForGroup]="lfgPosts"></app-post-list>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,49 @@
+<div *ngIf="campaign && isLoading.length >= 2">
+  <mat-card *ngIf="campaign">
+    <mat-card-header class="d-flex">
+      <img
+        src="{{ campaign.creator.img }}"
+        alt="Dungeon master profile pic"
+        mat-card-avatar
+        routerLink="/dashboard/profile/{{ campaign.creator.id }}" />
+      <mat-card-title>{{ campaign.title }}</mat-card-title>
+      <mat-card-subtitle class="me-5"
+        >Dungeon Master: {{ campaign.creator.username }}</mat-card-subtitle
+      >
+      <div class="d-flex align-items-center justify-items-end">
+        <p class="p-0 m-0 text-center fw-bolder">
+          {{ campaign.currentPlayers.length }}/{{ campaign.playersNeeded }}
+          <br />
+          Players
+        </p>
+      </div>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="{{ campaign.img }}"
+      alt="Photo of the campaign"
+      (click)="updateImage()" />
+    <mat-card-content>
+      <p>
+        {{ campaign.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        *ngIf="activeUser.id !== campaign.creator.id"
+        mat-raised-button
+        color="accent"
+        [disabled]="hasRequested"
+        (click)="joinCampaign()">
+        {{
+          hasRequested
+            ? 'Request sent'
+            : campaign.currentPlayers.length >= campaign.playersNeeded
+            ? 'Campaign is full'
+            : 'Request to join'
+        }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <app-comments-section [postRef]="campaign._id"></app-comments-section>
+</div>

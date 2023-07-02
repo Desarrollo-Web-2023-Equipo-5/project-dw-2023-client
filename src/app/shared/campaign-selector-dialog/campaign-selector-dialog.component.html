@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Invite to game</h1>
+<div mat-dialog-content>
+  <p>
+    Do you want to invite <b>{{ data.toInviteName }}</b> to play?
+  </p>
+  <mat-form-field class="d-flex flex-column justify-content-center">
+    <mat-label>{{
+      campaignOptions.length <= 0 ? 'No campaings to select' : 'Select Campaign'
+    }}</mat-label>
+    <mat-select
+      [(ngModel)]="selectedCampaign"
+      [disabled]="campaignOptions.length <= 0">
+      <mat-option
+        *ngFor="let campaign of campaignOptions"
+        [value]="campaign._id"
+        >{{ campaign.title }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close [mat-dialog-close]="false">No</button>
+  <button
+    [disabled]="!selectedCampaign"
+    mat-button
+    mat-dialog-close
+    cdkFocusInitial
+    [mat-dialog-close]="selectedCampaign">
+    Yes
+  </button>
+</div>

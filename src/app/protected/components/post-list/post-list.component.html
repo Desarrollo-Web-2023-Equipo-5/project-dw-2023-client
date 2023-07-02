@@ -1,0 +1,13 @@
+<!-- {{ lookingForGroup | json }} -->
+<mat-list>
+  <div *ngIf="filteredPosts">
+    <mat-list-item *ngFor="let post of filteredPosts">
+      <app-post [post]="post"></app-post>
+    </mat-list-item>
+  </div>
+  <div *ngIf="lookingForGroup">
+    <mat-list-item *ngFor="let user of lookingForGroup">
+      <app-post [user]="user"></app-post>
+    </mat-list-item>
+  </div>
+</mat-list>

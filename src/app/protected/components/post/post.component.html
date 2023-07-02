@@ -1,0 +1,40 @@
+<div *ngIf="post">
+  <mat-card class="w-100 h-100">
+    <mat-card-content
+      class="d-flex border align-items-center justify-content-between">
+      <div>
+        <p class="fw-bold">{{ post.title }}</p>
+      </div>
+      <div class="d-flex align-items-center">
+        <p>{{ post.currentPlayers.length }}/{{ post.playersNeeded }}</p>
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Example icon button with a vertical three dot icon"
+          routerLink="/dashboard/campaign-details/{{ post._id }}">
+          <mat-icon>play_circle</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="user">
+  <mat-card class="w-100 h-100">
+    <mat-card-content
+      class="d-flex border align-items-center justify-content-between">
+      <div>
+        <p class="fw-bold">{{ user.username }}</p>
+      </div>
+      <div class="d-flex align-items-center">
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Example icon button with a vertical three dot icon"
+          routerLink="/dashboard/profile/{{ user.id }}">
+          <mat-icon>play_circle</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

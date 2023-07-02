@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <p>{{ data.message }}</p>
+  <mat-form-field>
+    <mat-label></mat-label>
+    <textarea matInput [value]="data.value" [(ngModel)]="comment"> </textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close [mat-dialog-close]="false">Cancel</button>
+  <button
+    mat-button
+    mat-dialog-close
+    cdkFocusInitial
+    [mat-dialog-close]="comment">
+    Submit
+  </button>
+</div>

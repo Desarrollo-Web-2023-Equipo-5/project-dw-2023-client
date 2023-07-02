@@ -1,0 +1,33 @@
+button {
+  width: 7em;
+}
+
+img {
+  width: 25em;
+  height: 25em;
+}
+
+p {
+  width: 260px;
+
+  margin-top: -3em;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #671616;
+}
+
+.background {
+  background: url('../../../../assets/Icewind.svg');
+  color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #040404;
+  height: 100vh;
+}
+
+img {
+  margin-top: -3em;
+}
