@@ -1,6 +1,10 @@
-# ProjectDw2023Client
+# Dungeons and Turtles client side
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+
+Project for Web Development 2023 UCU (Universidad Catolica del Uruguay).
+
+Web app for D&D players to find campaigns and players looking to play.
 
 ## Development server
 
