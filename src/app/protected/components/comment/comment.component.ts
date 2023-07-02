@@ -5,6 +5,7 @@ import { ApiService } from '../../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-dialog.component';
+import { InputDialogComponent } from 'src/app/shared/input-dialog/input-dialog.component';
 
 @Component({
   selector: 'app-comment',
@@ -15,8 +16,6 @@ export class CommentComponent {
   get activeUser() {
     return this.authService.activeUser;
   }
-
-  editMode: boolean = false;
 
   @Input() comment!: Comment;
   @Output() deleteCommentEvent = new EventEmitter<Comment>();
@@ -55,6 +54,30 @@ export class CommentComponent {
   }
 
   updateComment() {
-    this.editMode = true;
+    const dialogRef = this.dialog.open(InputDialogComponent, {
+      width: '250px',
+      data: {
+        title: 'Edit Comment',
+        message: 'Enter your edited comment below:',
+        value: this.comment.content,
+      },
+    });
+    dialogRef.afterClosed().subscribe({
+      next: result => {
+        if (!result) return;
+        if (!this.comment.id) return;
+        this.apiService
+          .updateComment(this.comment.id, { content: result })
+          .subscribe({
+            next: () => {
+              this.comment.content = result;
+              this.toastr.success('Comment updated successfully');
+            },
+            error: () => {
+              this.toastr.error('Error updating comment');
+            },
+          });
+      },
+    });
   }
 }

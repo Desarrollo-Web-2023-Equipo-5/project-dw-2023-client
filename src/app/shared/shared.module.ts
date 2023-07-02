@@ -7,6 +7,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { UploadFileDialogComponent } from './upload-file-dialog/upload-file-dialog.component';
 import { CampaignSelectorDialogComponent } from './campaign-selector-dialog/campaign-selector-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { InputDialogComponent } from './input-dialog/input-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     ConfirmDialogComponent,
     UploadFileDialogComponent,
     CampaignSelectorDialogComponent,
+    InputDialogComponent,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule, FormsModule],
   exports: [DevNavComponent],

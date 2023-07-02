@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Comment } from '../interfaces/comment';
-import { Notification } from '../interfaces/notification.interface';
 import { Observable, map } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Campaign } from '../interfaces/campaign.interface';
@@ -62,6 +61,10 @@ export class ApiService {
     return this.http.delete<any>(`${this.baseUrl}/comments/${id}`);
   }
 
+  updateComment(id: string, comment: any) {
+    return this.http.put<any>(`${this.baseUrl}/comments/${id}`, comment);
+  }
+
   createCampaign(campaign: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/campaigns`, campaign).pipe(
       map((res: any) => {
@@ -85,7 +88,6 @@ export class ApiService {
       })
     );
   }
-
 
   getCharactersheetByUserId(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/users/${id}/characters`).pipe(

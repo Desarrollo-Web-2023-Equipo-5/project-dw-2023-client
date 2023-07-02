@@ -14,7 +14,6 @@
     *ngIf="comment.creator.id === activeUser?.id"
     class="gap-2 d-flex flex-column justify-content-center align-items-center">
     <button
-      disabled
       (click)="updateComment()"
       mat-mini-fab
       color="primary"
