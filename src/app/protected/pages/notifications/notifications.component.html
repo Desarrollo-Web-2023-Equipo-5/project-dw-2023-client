@@ -12,10 +12,14 @@
               routerLink="/dashboard/profile/{{ request.user.id }}"
               >{{ request.user.username }}</mat-card-subtitle
             >
+            <mat-card-subtitle
+              >Status: {{ request.status | uppercase }}</mat-card-subtitle
+            >
           </mat-card-header>
           <mat-card-actions class="d-flex justify-content-between">
             <button
-              (click)="acceptRequest(request)"
+              [disabled]="request.status !== 'pending'"
+              (click)="acceptRequest(request, 'requests')"
               color="primary"
               mat-mini-fab
               aria-label="Accept icon button with a check icon">
@@ -31,7 +35,8 @@
               <mat-icon>info</mat-icon>
             </button>
             <button
-              (click)="rejectRequest(request)"
+              [disabled]="request.status !== 'pending'"
+              (click)="rejectRequest(request, 'requests')"
               color="warn"
               mat-mini-fab
               aria-label="Reject icon button with a check icon">
@@ -52,13 +57,14 @@
         <mat-card>
           <mat-card-header>
             <mat-card-title>{{ invite.campaign.title }}</mat-card-title>
-            <mat-card-subtitle>{{
-              invite.status | uppercase
-            }}</mat-card-subtitle>
+            <mat-card-subtitle
+              >Status: {{ invite.status | uppercase }}</mat-card-subtitle
+            >
           </mat-card-header>
           <mat-card-actions class="d-flex justify-content-between">
             <button
-              (click)="acceptRequest(invite)"
+              [disabled]="invite.status !== 'pending'"
+              (click)="acceptRequest(invite, 'invites')"
               color="primary"
               mat-mini-fab
               aria-label="Accept icon button with a check icon">
@@ -72,7 +78,8 @@
               <mat-icon>info</mat-icon>
             </button>
             <button
-              (click)="rejectRequest(invite)"
+              [disabled]="invite.status !== 'pending'"
+              (click)="rejectRequest(invite, 'invites')"
               color="warn"
               mat-mini-fab
               aria-label="Reject icon button with a check icon">

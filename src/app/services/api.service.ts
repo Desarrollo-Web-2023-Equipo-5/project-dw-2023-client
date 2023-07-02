@@ -86,6 +86,9 @@ export class ApiService {
     );
   }
 
+  updateCampaign(id: string, campaign: any) {
+    return this.http.put<any>(`${this.baseUrl}/campaigns/${id}`, campaign);
+  }
 
   getCharactersheetByUserId(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/users/${id}/characters`).pipe(
@@ -111,6 +114,10 @@ export class ApiService {
           return res.requests;
         })
       );
+  }
+
+  updateRequest(id: string, request: any) {
+    return this.http.put<any>(`${this.baseUrl}/requests/${id}`, request);
   }
 
   getInvites(id: string): Observable<any[]> {
